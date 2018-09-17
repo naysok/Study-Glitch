@@ -1,0 +1,1 @@
+ffmpeg -framerate 24 -start_number 0 -i %3d.jpg -r 30 -an -vcodec libx264 -pix_fmt yuv420p out.mp4
