@@ -4,142 +4,25 @@ import random
 from datetime import datetime
 
 
-img = cv2.imread("01.jpg")
-img_origin = cv2.imread("01.jpg")
 
-# img = cv2.imread("ImageSample-3.jpg")
-# img_origin = cv2.imread("ImageSample-3.jpg")
+for x in range(1,2):
 
-
-"""
-for a in range(100, 900):
-    for b in range(100, 900):
-        if a%2 == 0:
-            if b%2 == 0:
-                img[a,b] = 255
-        else:
-            if b%2 != 0:
-                img[a,b] = 255
-"""
-
-MIN = 60
-MAX = 130
-
-r0 = random.randint(MIN, MAX)
-r1 = random.randint(MIN, MAX)
-r2 = random.randint(MIN, MAX)
+    time1 = cv2.getTickCount() # クロック時間
 
 
-r_0_10_a = random.randint(1,11)
-r_0_10_b = random.randint(1,11)
-
-
-r_10_10_0 = random.randint(-10,10)
-r_10_10_1 = random.randint(-10,10)
-r_10_10_2 = random.randint(-10,10)
+    num = "%05d" % x
+    in_path = "src_cropped/image-" + num + ".jpg"
+    out_path = "test-Glitch/image-" + num + ".jpg"
+    out_path_debug = "test-Glitch/image-" + num + "-" +datetime.now().strftime("%H-%M-%S")+".jpg"
 
 
 
 
-r_0_20 = random.randint(1,21)
-r_0_30 = random.randint(1,31)
-
-"""
-for i in range(0,995):
-    for j in range(0,995):
-        if
-        tmp0 = img[i,j,0]
-        tmp1 = img[i,j,1]
-        tmp2 = img[i,j,2]
-        # img[i,j] = img[i+1,j]
-        img[i+1,j] = (tmp0, tmp1, tmp2)
-        img[i+2,j] = (tmp0, tmp1, tmp2)
-        img[i+3,j] = (tmp0, tmp1, tmp2)
-        img[i+4,j] = (tmp0, tmp1, tmp2)
-"""
-
-for i in range(0,999):
-    for j in range(0,999):
-        if i%2 == 0:
-            tmp0 = img[i,j,0]
-            tmp1 = img[i,j,1]
-            tmp2 = img[i,j,2]
-            img[i,j] = img[i+1,j]
-            img[i+1,j] = (tmp0, tmp1, tmp2)
+    img = cv2.imread(in_path)
 
 
-for i in range(0,999):
-    for j in range(0,999):
-        if j%2 == 0:
-            tmp0 = img[i,j,0]
-            tmp1 = img[i,j,1]
-            tmp2 = img[i,j,2]
-            img[i,j] = img[i,j+1]
-            img[i,j+1] = (tmp0, tmp1, tmp2)
-
-
-"""
-for i in range(11,988):
-    for j in range(11,988):
-        z = random.randint(-7,7)
-        tmp0 = img[i,j,0]
-        tmp1 = img[i,j,1]
-        tmp2 = img[i,j,2]
-        img[i,j] = img[i+z,j]
-        img[i,j+z] = (tmp0, tmp1, tmp2)
-"""
-
-for i in range(51,949):
-    for j in range(51,949):
-
-        if i%r_0_10_a == 10:
-            if j%r_0_10_b > 3:
-                r_10_30 = random.randint(-50,50)
-                for u in range(1, r_10_30):
-                    img[i+u,j,0] = img[i,j,0]
-                    img[i+u,j,1] = img[i,j,1]
-                    img[i+u,j,2] = img[i,j,2]
-
-
-
-
-for i in range(0,999):
-    for j in range(0,999):
-
-        # img[i,j] = [img[i,j,0], img[i,j,1], img[i,j,2]] ### origin
-        # img[i,j] = [img[i,j,0], 0, 0] ### Blue
-        # img[i,j] = [0, img[i,j,1], 0] ### Green
-        # img[i,j] = [0, 0, img[i,j,2]] ### origin
-
-
-        # if i%10 ==0:
-            # img[i,j] = (255, 0, 0) # Blue
-            # img[i,j] = (0, 255, 0) # Green
-            # img[i,j] = (0, 0, 255) # Blue
-
-
-        if i%r_0_20 == 0:
-            if img[i, j, 0] < 150:
-                img[i,j,0] = img[i,j,0] + r_10_10_0
-                img[i,j,1] = img[i,j,1] + r_10_10_1
-                img[i,j,2] = img[i,j,2] + r_10_10_2
-
-
-        if img[i, j, 0] > r1: # Blue
-            ran_b = random.randint(r0, 180)
-            img[i,j,0] = ran_b
-            # img[i,j,0] = 0
-        else:
-            ran_b = random.randint(50, r0)
-            img[i,j,0] = ran_b
-
-
-        if img[i, j, 1] > r1: # Green
-            ran_g = random.randint(r1, 180)
-            img[i,j,1] = ran_g
-        else:
-            ran_g = random.randint(50, r1)
-            img[i,j,1] = ran_g
+    WH = 720 # H
+    ADD = 50
 
 
 
@@ -147,63 +30,167 @@ for i in range(0,999):
 
 
 
-        if img[i, j ,2] > r2: # red
-            ran_r = random.randint(r2, 180)
-            img[i,j,2] = ran_r
-            #img[i,j,2] = img[i,j,2]-20
-        else:
-            ran_r = random.randint(50, r2)
-            img[i,j,2] = ran_r
-            # img[i,j,2] = img[i,j,2]+20
 
-
-
-        if img[i, j ,0] > 170:
-            if i%10 == 0:
-                img[i,j,1] = img[i,j,1] - 20
-                # img[i,j,1] = img[i,j,0]
+    ### Blur
+    for i in range(0,WH):
+        for j in range(0,WH):
+            if j%2 == 0:
+                tmp0 = img[i,j,0]
+                tmp1 = img[i,j,1]
+                tmp2 = img[i,j,2]
+                img[i,j] = img[i,j+1]
+                img[i,j+1] = (tmp0, tmp1, tmp2)
 
 
 
 
-        if img[i,j ,0] < 50:
-            if img[i,j ,1] < 50:
-                if img[i,j ,2] < 50:
-                    if i%40 == 0:
-                        img[i,j,1] = img[i,j,2] + 50
-                        img[i,j,0] = img[i,j,0] + 20
+    ### Draw Line
+    r_0_20_h = random.randint(1,21)
+    r_0_20_v = random.randint(1,21)
+    r_10_10_0 = random.randint(-10,10)
+    r_10_10_1 = random.randint(-10,10)
+    r_10_10_2 = random.randint(-10,10)
+
+
+    # for i in range(0, WH):
+    #     for j in range(0, WH):
+    #
+    #         ### Draw horizontal line (-)
+    #         if i%r_0_20_h < 2:
+    #             if img[i, j, 0] < 180:
+    #                 img[i,j,0] = img[i,j,0] + r_10_10_0 + 10
+    #                 img[i,j,1] = img[i,j,1] + r_10_10_1 + 10
+    #                 img[i,j,2] = img[i,j,2] + r_10_10_2 + 10
+    #
+    #         ### Draw vertical line (|)
+    #         if j%r_0_20_v < 2:
+    #             if img[i, j, 0] < 180:
+    #                 img[i,j,0] = img[i,j,0] + r_10_10_0 + 10
+    #                 img[i,j,1] = img[i,j,1] + r_10_10_1 + 10
+    #                 img[i,j,2] = img[i,j,2] + r_10_10_2 + 10
 
 
 
-for i in range(0,989):
-    for j in range(0,989):
-        if i%10 == 0:
-            tmp0 = img[i,j,0]
-            tmp1 = img[i,j,1]
-            tmp2 = img[i,j,2]
-            img[i,j] = img[i+9,j]
-            img[i+9,j] = (tmp0, tmp1, tmp2)
+
+    ### Edit Color Channel
+
+    MIN = 51
+    MAX = 179
+    r_MM0 = random.randint(MIN, MAX)
+    r_MM1 = random.randint(MIN, MAX)
+    r_MM2 = random.randint(MIN, MAX)
+    r0 = random.randint(MIN, MAX)
+    r1 = random.randint(MIN, MAX)
+    r2 = random.randint(MIN, MAX)
+    r2 = random.randint(MIN, MAX)
+
+    for i in range(0, WH):
+        for j in range(0, WH):
+
+            ### Edit Blue Channel
+            if img[i, j, 0] > r_MM0: # Blue
+                ran_b = random.randint(r0, 180)
+                img[i,j,0] = (img[i,j,0] + ran_b)/2
+            else:
+                ran_b = random.randint(50, r0)
+                img[i,j,0] =  (img[i,j,0] + ran_b)/2
 
 
-for i in range(0,989):
-    for j in range(0,989):
-        if j%10 == 0:
-            tmp0 = img[i,j,0]
-            tmp1 = img[i,j,1]
-            tmp2 = img[i,j,2]
-            img[i,j] = img[i,j+9]
-            img[i,j+9] = (tmp0, tmp1, tmp2)
+            ### Edit Green Channel
+            if img[i, j, 1] > r_MM1: # Green
+                ran_g = random.randint(r1, 180)
+                img[i,j,1] = (img[i,j,1] + ran_g)/2
+            else:
+                ran_g = random.randint(50, r1)
+                img[i,j,1] = (img[i,j,1] + ran_g)/2
+
+
+            ### Edit Red Channel
+            if img[i, j ,2] > r_MM2: # red
+                ran_r = random.randint(r2, 180)
+                img[i,j,2] = (img[i,j,1] + ran_r)/2
+            else:
+                ran_r = random.randint(50, r2)
+                img[i,j,2] = img[i,j,2] = (img[i,j,1] + ran_r)/2
 
 
 
-cv2.imshow("preview",img)
-# cv2.imshow("origin",img_origin)
 
 
-fileName = datetime.now().strftime("%d%H%M%S")
-cv2.imwrite(("./out/" + fileName + ".jpg"), img);
+    ### scratch
+    sc_r_0_20_h = random.randint(5,21)
+    sc_r_0_20_v = random.randint(5,21)
+
+    ### scratch horizontal (-)
+
+    # for i in range(0, WH-20):
+    #     for j in range(0, WH-20):
+    #         if i%sc_r_0_20_h < 1:
+    #             tmp0 = img[i,j,0]
+    #             tmp1 = img[i,j,1]
+    #             tmp2 = img[i,j,2]
+    #
+    #             img[i,j] = img[i+sc_r_0_20_h,j]
+    #             img[i+sc_r_0_20_h,j] = (tmp0, tmp1, tmp2)
+    #
+    # ### scratch vertical (|)
+    # for i in range(0, WH-20):
+    #     for j in range(0, WH-20):
+    #         if j%sc_r_0_20_v < 1:
+    #             tmp0 = img[i,j,0]
+    #             tmp1 = img[i,j,1]
+    #             tmp2 = img[i,j,2]
+    #             img[i,j] = img[i,sc_r_0_20_v]
+    #             img[i,sc_r_0_20_v] = (tmp0, tmp1, tmp2)
 
 
 
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+
+
+
+
+    ### Overflow Blue
+    # for i in range(0, WH):
+    #     for j in range(0, WH):
+    #         if img[i,j,0] > 225 and img[i,j,1] < 50 and img[i,j,2] < 50:
+    #             img[i,j,0] = 255
+    #             img[i,j,1] = 0
+    #             img[i,j,2] = 0
+
+    ### Overflow Green
+    # for i in range(0, WH):
+    #     for j in range(0, WH):
+    #         if img[i,j,1] > 220 and img[i,j,0] < 50 and img[i,j,2] < 50:
+    #             img[i,j,0] = 0
+    #             img[i,j,1] = 255
+    #             img[i,j,2] = 0
+
+    ### Overflow Green
+    # for i in range(0, WH):
+    #     for j in range(0, WH):
+    #         if img[i,j,2] > 220 and img[i,j,0] < 50 and img[i,j,1] < 50:
+    #             img[i,j,0] = 0
+    #             img[i,j,1] = 0
+    #             img[i,j,2] = 255
+
+
+
+
+
+
+
+    print(datetime.now().strftime("%H:%M:%S"))
+    cv2.imshow("preview",img)
+
+    cv2.imwrite(out_path_debug, img);
+    #cv2.imwrite(out_path, img);
+
+    cv2.destroyAllWindows()
+    print("Glitched :", num)
+
+    time2 = cv2.getTickCount()
+    time = (time2 - time1)/cv2.getTickFrequency() # クロック時間の差を周波数で割ると秒
+    print(time, "sec")
+
+
+print("Finished!!")
