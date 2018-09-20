@@ -3,6 +3,11 @@ import cv2
 import random
 from datetime import datetime
 
+### 40.363846017 sec
+### 44.626873741 sec
+###
+###
+###
 
 Index = 100
 for x in range(Index, Index+1): ### debug
@@ -46,16 +51,13 @@ for x in range(Index, Index+1): ### debug
 
 
 
-    ### Draw Line
-    r_0_20_h = random.randint(1,21)
-    r_0_20_v = random.randint(1,21)
-    r_10_10_0 = random.randint(-10,10)
-    r_10_10_1 = random.randint(-10,10)
-    r_10_10_2 = random.randint(-10,10)
+            ### Draw Line
+            r_0_20_h = random.randint(1,21)
+            r_0_20_v = random.randint(1,21)
+            r_10_10_0 = random.randint(-10,10)
+            r_10_10_1 = random.randint(-10,10)
+            r_10_10_2 = random.randint(-10,10)
 
-
-    for i in range(0, WH):
-        for j in range(0, WH):
 
             ### Draw horizontal line (-)
             if i%r_0_20_h < 2:
@@ -74,20 +76,18 @@ for x in range(Index, Index+1): ### debug
 
 
 
-    ### Edit Color Channel
+            ### Edit Color Channel
 
-    MIN = 51
-    MAX = 179
-    r_MM0 = random.randint(MIN, MAX)
-    r_MM1 = random.randint(MIN, MAX)
-    r_MM2 = random.randint(MIN, MAX)
-    r0 = random.randint(MIN, MAX)
-    r1 = random.randint(MIN, MAX)
-    r2 = random.randint(MIN, MAX)
-    r2 = random.randint(MIN, MAX)
+            MIN = 51
+            MAX = 179
+            r_MM0 = random.randint(MIN, MAX)
+            r_MM1 = random.randint(MIN, MAX)
+            r_MM2 = random.randint(MIN, MAX)
+            r0 = random.randint(MIN, MAX)
+            r1 = random.randint(MIN, MAX)
+            r2 = random.randint(MIN, MAX)
+            r2 = random.randint(MIN, MAX)
 
-    for i in range(0, WH):
-        for j in range(0, WH):
 
             ### Edit Blue Channel
             if img[i, j, 0] > r_MM0: # Blue
@@ -118,6 +118,27 @@ for x in range(Index, Index+1): ### debug
 
 
 
+            ### Overflow Blue
+            if img[i,j,0] > 225 and img[i,j,1] < 50 and img[i,j,2] < 50:
+                img[i,j,0] = 255
+                img[i,j,1] = 0
+                img[i,j,2] = 0
+
+            ## Overflow Green
+            if img[i,j,1] > 220 and img[i,j,0] < 50 and img[i,j,2] < 50:
+                img[i,j,0] = 0
+                img[i,j,1] = 255
+                img[i,j,2] = 0
+
+            ## Overflow Green
+            if img[i,j,2] > 220 and img[i,j,0] < 50 and img[i,j,1] < 50:
+                img[i,j,0] = 0
+                img[i,j,1] = 0
+                img[i,j,2] = 255
+
+
+
+
 
     ### scratch
     sc_r_0_20_h = random.randint(5,21)
@@ -135,9 +156,8 @@ for x in range(Index, Index+1): ### debug
                 img[i,j] = img[i+sc_r_0_20_h,j]
                 img[i+sc_r_0_20_h,j] = (tmp0, tmp1, tmp2)
 
-    ### scratch vertical (|)
-    for i in range(0, WH-20):
-        for j in range(0, WH-20):
+            ### scratch vertical (|)
+
             if j%sc_r_0_20_v < 1:
                 tmp0 = img[i,j,0]
                 tmp1 = img[i,j,1]
@@ -146,34 +166,6 @@ for x in range(Index, Index+1): ### debug
                 img[i,sc_r_0_20_v] = (tmp0, tmp1, tmp2)
 
 
-
-
-
-
-
-    ### Overflow Blue
-    for i in range(0, WH):
-        for j in range(0, WH):
-            if img[i,j,0] > 225 and img[i,j,1] < 50 and img[i,j,2] < 50:
-                img[i,j,0] = 255
-                img[i,j,1] = 0
-                img[i,j,2] = 0
-
-    ## Overflow Green
-    for i in range(0, WH):
-        for j in range(0, WH):
-            if img[i,j,1] > 220 and img[i,j,0] < 50 and img[i,j,2] < 50:
-                img[i,j,0] = 0
-                img[i,j,1] = 255
-                img[i,j,2] = 0
-
-    ## Overflow Green
-    for i in range(0, WH):
-        for j in range(0, WH):
-            if img[i,j,2] > 220 and img[i,j,0] < 50 and img[i,j,1] < 50:
-                img[i,j,0] = 0
-                img[i,j,1] = 0
-                img[i,j,2] = 255
 
 
 

@@ -3,6 +3,11 @@ import cv2
 import random
 from datetime import datetime
 
+### 27.60810781 sec
+### 24.172462286 sec
+### 28.878873516 sec
+### 27.326031583 sec
+### 29.613384219 sec
 
 Index = 100
 for x in range(Index, Index+1): ### debug
