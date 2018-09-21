@@ -43,5 +43,35 @@ ffmpeg -framerate 30 -start_number 0 -i image-%05d.jpg -r 30 -an -vcodec libx264
 ```
 
 
+---  
+
+### Effects  
+
+- Blur  
+![photo](Effects/Blur.jpg)  
+
+- Draw Horizontal Line  
+![photo](Effects/Draw-horizontal-line.jpg)  
+
+- Draw Vertical Line  
+![photo](Effects/Draw-vertical-line.jpg)  
+
+- Edit Blue Channel  
+![photo](Effects/Edit-Blue-Channel.jpg)  
+
+- Edit Red Channel  
+![photo](Effects/Edit-Red-Channel.jpg)  
+
+- Edit Green Channel  
+![photo](Effects/Edit-Green-Channel.jpg)  
+
+- Scratch Forizontal  
+![photo](Effects/Scratch-horizontal.jpg)  
+
+- Scratch Vertical  
+![photo](Effects/Scratch-vertical.jpg)
+
+
+
 
 
