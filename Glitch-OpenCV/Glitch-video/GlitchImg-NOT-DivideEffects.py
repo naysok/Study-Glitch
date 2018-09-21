@@ -5,9 +5,9 @@ from datetime import datetime
 
 ### 40.363846017 sec
 ### 44.626873741 sec
-###
-###
-###
+### 43.443271187 sec
+### 39.435642034 sec
+### 35.684138297 sec
 
 Index = 100
 for x in range(Index, Index+1): ### debug
