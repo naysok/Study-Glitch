@@ -65,7 +65,7 @@ ffmpeg -framerate 30 -start_number 0 -i image-%05d.jpg -r 30 -an -vcodec libx264
 - Edit Green Channel  
 ![photo](Effects/Edit-Green-Channel.jpg)  
 
-- Scratch Forizontal  
+- Scratch Horizontal  
 ![photo](Effects/Scratch-horizontal.jpg)  
 
 - Scratch Vertical  
