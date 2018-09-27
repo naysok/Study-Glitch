@@ -4,10 +4,18 @@ import random
 from datetime import datetime
 
 
-Index = 100
-for x in range(Index, Index+1): ### debug
 
+### Debug
+### Sample
+for test in range(0, 5): ### debug
+    test_list = [1, 400, 600, 800, 1400]
+    x = test_list[test]
+    print(x)
+
+
+###
 # for x in range(1, 100):
+
 
     time1 = cv2.getTickCount() # クロック時間
 
