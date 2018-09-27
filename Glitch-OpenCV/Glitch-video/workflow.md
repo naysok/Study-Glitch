@@ -14,7 +14,7 @@
 
 ↓ (python, opencv) // ok??  
 
-**Glitch-jpg (720x720)**  
+**Glitch-jpg (720x720), src-glitch**  
 
 ↓ (ffmpeg) // ok  
 
