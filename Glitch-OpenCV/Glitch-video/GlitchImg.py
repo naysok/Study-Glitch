@@ -31,7 +31,7 @@ for x in range(1, 1584):
 
     num = "%05d" % x
     in_path = "src_cropped/image-" + num + ".jpg"
-    out_path = "src-glitch/image-" + num + ".jpg"
+    out_path = "src_glitch/image-" + num + ".jpg"
     out_path_debug = "test-Glitch/image-" + num + "-" +datetime.now().strftime("%H-%M-%S")+".jpg"
 
 
