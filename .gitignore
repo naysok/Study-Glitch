@@ -1,3 +1,6 @@
 .DS_Store
 
 /Glitch-OpenCV/Glitch-video/test-Glitch/
+
+*.mp4
+*.mov
